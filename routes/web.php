@@ -17,3 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('index');
 
+Route::post('register', 'Auth\RegisterController@store')->name('register');
+Route::post('login', 'Auth\LoginController@store')->name('login');
+Route::middleware('auth')->group(function() {
+    Route::get('dashboard')->name('home');
+});
